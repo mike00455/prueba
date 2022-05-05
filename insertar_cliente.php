@@ -1,0 +1,22 @@
+<?php
+include("conexion.php");
+$con=conectar();
+
+$id=$_POST['id'];
+$cedula=$_POST['cedula'];
+$nombres=$_POST['nombres'];
+$apellidos=$_POST['apellidos'];
+$telefono=$_POST['telefono'];
+$correo=$_POST['correo'];
+$direccion=$_POST['direccion'];
+
+
+$sql="INSERT INTO cliente VALUES('$id','$cedula','$nombres','$apellidos','$telefono','$correo','$direccion')";
+$query= mysqli_query($con,$sql);
+
+if($query){
+    Header("Location: clientes.php");
+    
+}else {
+}
+?>

@@ -1,13 +1,12 @@
 package com.prueba.prueba.user.controller;
 
 import com.prueba.prueba.user.dto.UserRequestDto;
-import com.prueba.prueba.user.entity.User;
+import com.prueba.prueba.user.dto.UserResponseDto;
 import com.prueba.prueba.user.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -27,12 +26,12 @@ public class UserController {
     }
 
     @GetMapping("/get_all")
-    public ResponseEntity<List<User>> getAllUsers(){
-        return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
+    public ResponseEntity<?> getAllUsers(){
+        return userService.getAllUsers();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable("id")UUID userId){
+    public ResponseEntity<UserResponseDto> getUserById(@PathVariable("id")UUID userId){
         return new ResponseEntity<>(userService.getUserById(userId), HttpStatus.OK);
     }
 
@@ -41,7 +40,7 @@ public class UserController {
         return new ResponseEntity<>(userService.updateUser(userId, userRequestDto), HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @GetMapping("/delete/{id}")
     public ResponseEntity<Map<String, String>> deleteUser(@PathVariable("id") UUID userId){
         return new ResponseEntity<>(userService.deleteUser(userId), HttpStatus.OK);
     }

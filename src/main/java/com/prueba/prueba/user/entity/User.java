@@ -29,6 +29,9 @@ public class User {
     private String userPersonLastname;
     @Column(name = "user_password", nullable = false)
     private String userPassword;
+
+    @Column(name = "user_active", nullable = false)
+    private Boolean userActive;
     @Column(name = "created_at", updatable = false)
     @CreationTimestamp
     private Timestamp createdAt;
@@ -75,6 +78,14 @@ public class User {
 
     public void setUserPassword(String userPassword) {
         this.userPassword = userPassword;
+    }
+
+    public Boolean getUserActive() {
+        return userActive;
+    }
+
+    public void setUserActive(Boolean userActive) {
+        this.userActive = userActive;
     }
 
     public Timestamp getCreatedAt() {

@@ -1,6 +1,13 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /app
 spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
   datasource:
-    password: 1234
+    password: admin
     url: jdbc:postgresql://localhost:5432/rent_car
     username: postgres
   jpa:

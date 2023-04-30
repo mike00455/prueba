@@ -3,6 +3,7 @@ package com.prueba.prueba.user.entity;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.UpdateTimestamp;
 
 
 import java.sql.Timestamp;
@@ -31,6 +32,10 @@ public class User {
     @Column(name = "created_at", updatable = false)
     @CreationTimestamp
     private Timestamp createdAt;
+
+    @Column(name = "updated_at")
+    @UpdateTimestamp
+    private Timestamp updatedAt;
 
     public UUID getUserId() {
         return userId;
@@ -78,5 +83,13 @@ public class User {
 
     public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public Timestamp getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Timestamp updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }

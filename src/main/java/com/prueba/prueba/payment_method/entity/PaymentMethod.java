@@ -16,14 +16,17 @@ public class PaymentMethod {
     @Column(name = "payment_method_id", nullable = false)
     private UUID paymentMethodId;
 
-    @Column(name = "payment_method_type", nullable = false, unique = true)
+    @Column(name = "payment_method_type", nullable = false)
     private String paymentMethodType;
 
     @Column(name = "card_number", length = 16)
     private String cardNumber;
 
+    @Column(name = "payment_method_status", nullable = false)
+    private String paymentMethodStatus;
+
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     public UUID getPaymentMethodId() {
@@ -48,6 +51,14 @@ public class PaymentMethod {
 
     public void setCardNumber(String cardNumber) {
         this.cardNumber = cardNumber;
+    }
+
+    public String getPaymentMethodStatus() {
+        return paymentMethodStatus;
+    }
+
+    public void setPaymentMethodStatus(String paymentMethodStatus) {
+        this.paymentMethodStatus = paymentMethodStatus;
     }
 
     public User getUser() {

@@ -17,9 +17,6 @@ public class UserResponseDto {
     @JsonProperty(value = "user_person_lastname")
     private String userPersonLastname;
 
-    @JsonProperty(value = "user_password")
-    private String userPassword;
-
     public UUID getUserId() {
         return userId;
     }
@@ -50,13 +47,5 @@ public class UserResponseDto {
 
     public void setUserPersonLastname(String userPersonLastname) {
         this.userPersonLastname = userPersonLastname;
-    }
-
-    public String getUserPassword() {
-        return userPassword;
-    }
-
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
     }
 }

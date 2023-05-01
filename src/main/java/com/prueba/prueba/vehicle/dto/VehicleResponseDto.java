@@ -1,48 +1,30 @@
-package com.prueba.prueba.vehicle.entity;
+package com.prueba.prueba.vehicle.dto;
 
-import jakarta.persistence.*;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.UpdateTimestamp;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.sql.Timestamp;
 import java.util.UUID;
 
-@Entity
-@Table(name = "vehicle", schema = "public")
-public class Vehicle {
-
-    @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(name = "vehicle_id", nullable = false)
+public class VehicleResponseDto {
+    @JsonProperty(value = "vehicle_id", access = JsonProperty.Access.READ_ONLY)
     private UUID vehicleId;
 
-    @Column(name = "vehicle_make", nullable = false)
+    @JsonProperty(value = "vehicle_make")
     private String vehicleMake;
 
-    @Column(name = "vehicle_model", nullable = false)
+    @JsonProperty(value = "vehicle_model")
     private String vehicleModel;
 
-    @Column(name = "vehicle_year", nullable = false)
+    @JsonProperty(value = "vehicle_year")
     private String vehicleYear;
 
-    @Column(name = "vehicle_registration_number", nullable = false)
+    @JsonProperty(value = "vehicle_registration_number")
     private String vehicleRegistrationNumber;
 
-    @Column(name = "price_hour", nullable = false)
+    @JsonProperty(value = "price_hour")
     private Double priceHour;
 
-    @Column(name = "vehicle_tatus", nullable = false)
+    @JsonProperty(value = "vehicle_status")
     private String vehicleStatus;
-
-    @Column(name = "created_at", updatable = false)
-    @CreationTimestamp
-    private Timestamp createdAt;
-
-    @Column(name = "updated_at")
-    @UpdateTimestamp
-    private Timestamp updatedAt;
 
     public UUID getVehicleId() {
         return vehicleId;
@@ -98,21 +80,5 @@ public class Vehicle {
 
     public void setVehicleStatus(String vehicleStatus) {
         this.vehicleStatus = vehicleStatus;
-    }
-
-    public Timestamp getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Timestamp createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Timestamp getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Timestamp updatedAt) {
-        this.updatedAt = updatedAt;
     }
 }

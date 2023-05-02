@@ -25,7 +25,7 @@ public class Rental {
     @Column(name = "end_date")
     private LocalDateTime endDate;
 
-    @Column(name = "rental_value", nullable = false)
+    @Column(name = "rental_value")
     private Double rentalValue;
 
     @Column(name = "rental_status", nullable = false)
